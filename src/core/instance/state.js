@@ -111,6 +111,7 @@ function initProps (vm: Component, propsOptions: Object) {
 
 function initData (vm: Component) {
   let data = vm.$options.data
+//   === 优先级 大雨 3⃣️目运算符 的优先级 大于 赋值运算符
   data = vm._data = typeof data === 'function'
     ? getData(data, vm)
     : data || {}
@@ -127,6 +128,7 @@ function initData (vm: Component) {
   const props = vm.$options.props
   const methods = vm.$options.methods
   let i = keys.length
+//   防止 props data methods 出现 重复定义 这里 props 优先级 大于 data优先级 大于  methods优先级
   while (i--) {
     const key = keys[i]
     if (process.env.NODE_ENV !== 'production') {
@@ -150,7 +152,7 @@ function initData (vm: Component) {
   // observe data
   observe(data, true /* asRootData */)
 }
-
+// 通过调用 getData获取真正的数据
 export function getData (data: Function, vm: Component): any {
   // #7573 disable dep collection when invoking data getters
   pushTarget()
