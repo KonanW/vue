@@ -1,5 +1,5 @@
 /* @flow */
-
+/*$mount函数的作用是将模版字符串编译城渲染函数*/
 import config from 'core/config'
 import { warn, cached } from 'core/util/index'
 import { mark, measure } from 'core/util/perf'
